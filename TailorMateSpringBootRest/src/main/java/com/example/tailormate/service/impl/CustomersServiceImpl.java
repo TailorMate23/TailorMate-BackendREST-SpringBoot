@@ -46,6 +46,11 @@ public class CustomersServiceImpl implements CustomersService {
     }
 
     @Override
+    public void addCustomer(Customers customers) {
+        customersRepository.save(customers);
+    }
+
+    @Override
     public boolean deleteCustomer(int id) {
         Optional<Customers> optionalCustomer = customersRepository.findById(id);
         if (optionalCustomer.isPresent()) {
@@ -54,5 +59,15 @@ public class CustomersServiceImpl implements CustomersService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean existsByEmail(String emailAddress) {
+        return customersRepository.existsByEmailAddress(emailAddress);
+    }
+
+    @Override
+    public Customers findCustomersByEmailAddress(String email) {
+        return customersRepository.findByEmailAddress(email);
     }
 }

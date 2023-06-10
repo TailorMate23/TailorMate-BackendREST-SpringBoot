@@ -1,6 +1,5 @@
 package com.example.tailormate.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import jakarta.persistence.Entity;
@@ -9,42 +8,23 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "customers")
-public class Customers {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private int customerId;
+public class CustomersDTO {
 
 
-    @Column(name = "bio", length = 45)
     private String bio;
 
-    @Column(name = "avatar", length = 45)
     private String avatar;
 
-    @Column(name = "email_address", length = 45)
     private String emailAddress;
 
-    @Column(name = "username", length = 255)
     private String username;
 
-    @JsonIgnore
-    @Column(name = "password", length = 255)
     private String password;
 
-    @Column(name = "created_at", length = 45)
     private String createdAt;
 
-    @Column(name = "updated_at", length = 45)
     private String updatedAt;
 
-    @Column(name = "phone_number")
     private Integer phoneNumber;
 
     // Constructors, getters, and setters
@@ -53,13 +33,6 @@ public class Customers {
 
     // Getters and setters for all fields
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
 
     public String getEmailAddress() {
         return emailAddress;

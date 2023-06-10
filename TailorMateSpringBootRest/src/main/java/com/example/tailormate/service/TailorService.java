@@ -11,6 +11,7 @@ public interface TailorService {
     void deleteTailor(int tailorId);
     Tailor getTailorById(int tailorId);
 
+
     List<Tailor> getTailors();
 
     void addTailor(Tailor tailor);

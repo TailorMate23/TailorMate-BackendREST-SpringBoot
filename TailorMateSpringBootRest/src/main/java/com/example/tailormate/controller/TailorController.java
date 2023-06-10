@@ -1,6 +1,7 @@
 package com.example.tailormate.controller;
 import com.example.tailormate.model.TailorDTO;
 
+
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -53,12 +54,17 @@ public class TailorController {
         return "success add user";
     }
 
-    @PutMapping("/update")
-    public String updateTailor(@RequestBody Tailor tailor){
-        tailor.setPassword(passwordEncoder.encode(tailor.getPassword()));
+    @PutMapping("/{id}")
+    public String updateTailor(@PathVariable int id,@RequestBody TailorDTO tailorDTO){
+        Tailor existingTailor = tailorService.getTailorById(id);
+        ModelMapper modelMapper = new ModelMapper();
+        Tailor tailor = modelMapper.map(tailorDTO, Tailor.class);
+        tailor.setPassword(existingTailor.getPassword());
+        tailor.setTailorId(id);
         tailorService.updateTailor(tailor);
         return "success updated tailor";
     }
+
     // Login
     // work needed
     @PostMapping("/login")

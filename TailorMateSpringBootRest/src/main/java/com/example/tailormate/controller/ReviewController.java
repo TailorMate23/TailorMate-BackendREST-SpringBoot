@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/api/reviews/")
 public class ReviewController {
 
     private final ReviewService reviewService;
@@ -22,7 +22,7 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Review>> getAllReviews() {
         List<Review> reviews = reviewService.getAllReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
@@ -38,7 +38,7 @@ public class ReviewController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<Review> createReview(@RequestBody Review review) {
         Review savedReview = reviewService.saveReview(review);
         return new ResponseEntity<>(savedReview, HttpStatus.CREATED);
