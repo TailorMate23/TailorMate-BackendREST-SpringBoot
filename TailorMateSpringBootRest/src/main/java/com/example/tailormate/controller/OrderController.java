@@ -1,9 +1,11 @@
 package com.example.tailormate.controller;
 
-import com.example.tailormate.model.AreaOfSpecialization;
+import com.example.tailormate.model.Customers;
+import com.example.tailormate.model.Tailor;
 import com.example.tailormate.model.Order;
-import com.example.tailormate.service.AreaOfSpecializationService;
+import com.example.tailormate.service.CustomersService;
 import com.example.tailormate.service.OrderService;
+import com.example.tailormate.service.TailorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +14,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/orders")
 public class OrderController {
 
     private final OrderService orderService;
+    private final TailorService tailorService;
 
+    private final CustomersService customersService;
     @Autowired
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, TailorService tailorService, CustomersService customersService) {
         this.orderService = orderService;
+        this.tailorService = tailorService;
+        this.customersService = customersService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = orderService.getAllOrders();
         return new ResponseEntity<>(orders, HttpStatus.OK);
@@ -38,7 +44,7 @@ public class OrderController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         Order savedOrder = orderService.saveOrder(order);
         return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
@@ -64,6 +70,30 @@ public class OrderController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/tailors/{id}")
+    public  ResponseEntity<List<Order>> getTailorOrders(@PathVariable int id,@RequestParam(required = false) Integer status){
+        Tailor tailor = tailorService.getTailorById(id);
+        if (status == null) {
+            List<Order> orders = orderService.getOrderByTailor(tailor);
+            return new ResponseEntity(orders, HttpStatus.OK);
+        } else {
+            List<Order> orders = orderService.getOrderByTailorAndStatus(tailor,status);
+            return  new ResponseEntity<>(orders,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/customers/{id}")
+    public ResponseEntity<List<Order>> getCustomerOrders(@PathVariable int id,@RequestParam(required = false) Integer status){
+        Customers customers = customersService.getCustomerById(id).orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+        if (status == null){
+        List<Order> orders = orderService.getOrderByCustomer(customers);
+        return  new ResponseEntity<>(orders,HttpStatus.OK);
+        } else {
+            List<Order> orders = orderService.getOrderByCustomerAndStatus(customers,status);
+            return  new ResponseEntity<>(orders,HttpStatus.OK);
         }
     }
 }

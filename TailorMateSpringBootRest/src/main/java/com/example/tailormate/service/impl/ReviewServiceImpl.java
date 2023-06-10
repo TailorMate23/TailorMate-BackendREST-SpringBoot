@@ -47,4 +47,9 @@ public class ReviewServiceImpl implements ReviewService {
     public void deleteReview(int id) {
         reviewRepository.deleteById(id);
     }
+
+    @Override
+    public List<Review> getReviewsByTailor(Tailor tailor) {
+        return reviewRepository.getReviewsByTailor(tailor);
+    }
 }

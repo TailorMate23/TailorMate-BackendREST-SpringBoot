@@ -1,6 +1,7 @@
 package com.example.tailormate.service.impl;
 
 import com.example.tailormate.model.AreaOfSpecialization;
+import com.example.tailormate.model.Customers;
 import com.example.tailormate.model.Order;
 import com.example.tailormate.model.Tailor;
 import com.example.tailormate.repository.AreaOfSpecializationRepository;
@@ -47,5 +48,25 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrder(int id) {
         orderRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Order> getOrderByCustomer(Customers customers) {
+        return orderRepository.getOrderByCustomer(customers);
+    }
+
+    @Override
+    public List<Order> getOrderByTailor(Tailor tailor) {
+        return orderRepository.getOrderByTailor(tailor);
+    }
+
+    @Override
+    public List<Order> getOrderByTailorAndStatus(Tailor tailor, Integer status) {
+        return orderRepository.getOrderByTailorAndStatus(tailor,status);
+    }
+
+    @Override
+    public List<Order> getOrderByCustomerAndStatus(Customers customers, Integer status) {
+        return orderRepository.getOrderByCustomerAndStatus(customers,status);
     }
 }

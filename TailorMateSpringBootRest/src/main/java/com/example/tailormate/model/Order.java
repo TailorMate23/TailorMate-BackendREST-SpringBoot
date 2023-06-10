@@ -38,7 +38,7 @@ public class Order {
     private Integer status;
 
     @Column(name = "price", length = 45)
-    private String price;
+    private Double price;
 
     @Column(name = "delivery_address", length = 100)
     private String deliveryAddress;
@@ -109,11 +109,11 @@ public class Order {
         this.status = status;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

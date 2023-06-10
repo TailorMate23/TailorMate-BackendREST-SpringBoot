@@ -1,9 +1,9 @@
 package com.example.tailormate.controller;
 
-import com.example.tailormate.model.AreaOfSpecialization;
 import com.example.tailormate.model.Review;
-import com.example.tailormate.service.AreaOfSpecializationService;
+import com.example.tailormate.model.Tailor;
 import com.example.tailormate.service.ReviewService;
+import com.example.tailormate.service.TailorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,12 @@ import java.util.List;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final TailorService tailorService;
 
     @Autowired
-    public ReviewController(ReviewService reviewService) {
+    public ReviewController(ReviewService reviewService, TailorService tailorService) {
         this.reviewService = reviewService;
+        this.tailorService = tailorService;
     }
 
     @GetMapping("/")
@@ -28,6 +30,12 @@ public class ReviewController {
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
+    @GetMapping("/tailor/{id}")
+    public ResponseEntity<List<Review>> getAllTailorReviews(@PathVariable int id){
+        Tailor tailor = tailorService.getTailorById(id);
+        List<Review> reviews = reviewService.getReviewsByTailor(tailor);
+        return new ResponseEntity<>(reviews,HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Review> getReviewById(@PathVariable("id") int id) {
         Review review = reviewService.getReviewById(id);

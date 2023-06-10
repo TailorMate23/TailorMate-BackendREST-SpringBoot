@@ -16,6 +16,7 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
+
     @GetMapping("/{id}")
     public OrderDetail getOrderDetailById(@PathVariable("id") int orderDetailId) {
         return orderDetailService.getOrderDetailById(orderDetailId);

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order-details-measurements")
+@RequestMapping("/api/order-details-measurements")
 public class OrderDetailsMeasurementController {
 
     private final OrderDetailsMeasurementService orderDetailsMeasurementService;
@@ -22,7 +22,7 @@ public class OrderDetailsMeasurementController {
         this.orderDetailsMeasurementService = orderDetailsMeasurementService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<OrderDetailsMeasurement>> getAllOrderDetailsMeasurements() {
         List<OrderDetailsMeasurement> orderDetailsMeasurements = orderDetailsMeasurementService.getAllOrderDetailsMeasurements();
         return new ResponseEntity<>(orderDetailsMeasurements, HttpStatus.OK);
@@ -38,7 +38,7 @@ public class OrderDetailsMeasurementController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<OrderDetailsMeasurement> createOrderDetailsMeasurement(@RequestBody OrderDetailsMeasurement orderDetailsMeasurement) {
         OrderDetailsMeasurement savedOrderDetailsMeasurement = orderDetailsMeasurementService.saveOrderDetailsMeasurement(orderDetailsMeasurement);
         return new ResponseEntity<>(savedOrderDetailsMeasurement, HttpStatus.CREATED);
