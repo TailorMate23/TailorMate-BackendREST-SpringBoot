@@ -80,7 +80,7 @@ public class TailorController {
     }
 
     @PostMapping("/signup")
-    public String signup(@RequestBody SignupForm signupForm) {
+    public Tailor signup(@RequestBody SignupForm signupForm) {
         String email = signupForm.getEmail();
         String password = signupForm.getPassword();
         String username = signupForm.getUsername();
@@ -99,8 +99,9 @@ public class TailorController {
         tailor.setUsername(username);
         // Save the tailor
         tailorService.addTailor(tailor);
+//        Tailor exTailor = tailorService.findTailorByEmailAddress(tailor.getEmailAddress());
+        return tailor;
 
-        return "success";
     }
     @PostMapping("/change-password")
     public String changePassword(@RequestBody ChangePasswordForm changePasswordForm) {

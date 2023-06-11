@@ -103,7 +103,7 @@ public class CustomersController {
     }
 
     @PostMapping("/signup")
-    public String signup(@RequestBody SignupForm signupForm) {
+    public Customers signup(@RequestBody SignupForm signupForm) {
         String email = signupForm.getEmail();
         String password = signupForm.getPassword();
         String username = signupForm.getUsername();
@@ -122,8 +122,7 @@ public class CustomersController {
         customers.setUsername(username);
         // Save the tailor
         customerService.addCustomer(customers);
-
-        return "success";
+        return customers;
     }
     @PostMapping("/change-password")
     public String changePassword(@RequestBody ChangePasswordForm changePasswordForm) {
