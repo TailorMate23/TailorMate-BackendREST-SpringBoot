@@ -25,7 +25,7 @@ public class Size {
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
-    @Column(name = "size_title", length = 45)
+    @Column(name = "size_title", length = 1000)
     private String sizeTitle;
 
     // Constructors, getters, and setters

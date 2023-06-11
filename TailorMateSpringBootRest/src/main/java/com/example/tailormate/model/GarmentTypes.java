@@ -21,7 +21,7 @@ public class GarmentTypes {
     @Column(name = "garment_type_id")
     private int garmentTypeId;
 
-    @Column(name = "garment_type_title", length = 45)
+    @Column(name = "garment_type_title", length = 1000)
     private String garmentTypeTitle;
 
     // Constructors, getters, and setters

@@ -32,10 +32,10 @@ public class Review {
     @Column(name = "rating", length = 45)
     private String rating;
 
-    @Column(name = "review_text", length = 100)
+    @Column(name = "review_text", length = 1000)
     private String reviewText;
 
-    @Column(name = "created_at", length = 45)
+    @Column(name = "created_at", length = 1000)
     private String createdAt;
 
     // Constructors, getters, and setters

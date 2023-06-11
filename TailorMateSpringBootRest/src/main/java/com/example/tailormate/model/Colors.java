@@ -22,7 +22,7 @@ public class Colors {
     @Column(name = "color_id")
     private int colorId;
 
-    @Column(name = "color_title", length = 45)
+    @Column(name = "color_title", length = 1000)
     private String colorTitle;
 
     // Constructors, getters, and setters

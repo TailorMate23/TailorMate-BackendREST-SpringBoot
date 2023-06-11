@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.awt.*;
+
 @Entity
 @Table(name = "order_details")
 public class OrderDetail {
@@ -23,23 +26,26 @@ public class OrderDetail {
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
-    @Column(name = "design_details_text")
+    @Column(name = "design_details_text",length = 1000)
     private String designDetailsText;
 
 
-    @Column(name = "sample_img")
+    @Column(name = "sample_img",length = 1000)
     private String sampleImg;
 
-    @Column(name = "garment_type_id")
-    private int garmentTypeId;
+    @OneToOne
+    @JoinColumn(name = "garment_type_id")
+    private GarmentTypes garmentType;
 
-    @Column(name = "color_id")
-    private int colorId;
+    @OneToOne
+    @JoinColumn(name = "color_id")
+    private Colors colors;
 
-    @Column(name = "size_id")
-    private int sizeId;
+    @OneToOne
+    @JoinColumn(name = "size_id")
+    private Size size;
 
-    @Column(name = "instructions_text")
+    @Column(name = "instructions_text",length = 1000)
     private String instructionsText;
 
     public int getOrderDetailId() {
@@ -82,28 +88,28 @@ public class OrderDetail {
         this.sampleImg = sampleImg;
     }
 
-    public int getGarmentTypeId() {
-        return garmentTypeId;
+    public GarmentTypes getGarmentType() {
+        return garmentType;
     }
 
-    public void setGarmentTypeId(int garmentTypeId) {
-        this.garmentTypeId = garmentTypeId;
+    public void setGarmentType(GarmentTypes garmentType) {
+        this.garmentType = garmentType;
     }
 
-    public int getColorId() {
-        return colorId;
+    public Colors getColor() {
+        return colors;
     }
 
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
+    public void setColor(Colors color) {
+        this.colors = color;
     }
 
-    public int getSizeId() {
-        return sizeId;
+    public Size getSizeId() {
+        return size;
     }
 
-    public void setSizeId(int sizeId) {
-        this.sizeId = sizeId;
+    public void setSizeId(Size size) {
+        this.size = size;
     }
 
     public String getInstructionsText() {

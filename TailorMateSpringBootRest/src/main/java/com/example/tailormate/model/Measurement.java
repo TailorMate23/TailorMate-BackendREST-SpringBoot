@@ -20,7 +20,7 @@ public class Measurement {
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
-    @Column(name = "measurement_title")
+    @Column(name = "measurement_title",length = 1000)
     private String measurementTitle;
 
     public  ProductType getProductType(){

@@ -18,7 +18,7 @@ public class AreaOfSpecialization {
     @Column(name = "area_of_specialization_id")
     private int areaOfSpecializationId;
 
-    @Column(name = "area_of_specialization_title", length = 45)
+    @Column(name = "area_of_specialization_title", length = 1000)
     private String areaOfSpecializationTitle;
 
     // Constructors, getters, and setters

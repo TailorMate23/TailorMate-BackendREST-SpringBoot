@@ -22,26 +22,26 @@ public class Customers {
     private int customerId;
 
 
-    @Column(name = "bio", length = 45)
+    @Column(name = "bio", length = 1000)
     private String bio;
 
-    @Column(name = "avatar", length = 45)
+    @Column(name = "avatar", length = 1000)
     private String avatar;
 
-    @Column(name = "email_address", length = 45)
+    @Column(name = "email_address", length = 1000)
     private String emailAddress;
 
-    @Column(name = "username", length = 255)
+    @Column(name = "username", length = 1000)
     private String username;
 
     @JsonIgnore
-    @Column(name = "password", length = 255)
+    @Column(name = "password", length = 1000)
     private String password;
 
-    @Column(name = "created_at", length = 45)
+    @Column(name = "created_at", length = 1000)
     private String createdAt;
 
-    @Column(name = "updated_at", length = 45)
+    @Column(name = "updated_at", length = 1000)
     private String updatedAt;
 
     @Column(name = "phone_number")

@@ -28,31 +28,31 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customers customer;
 
-    @Column(name = "created_at", length = 45)
+    @Column(name = "created_at", length = 1000)
     private String createdAt;
 
-    @Column(name = "expected_delivery_at", length = 45)
+    @Column(name = "expected_delivery_at", length = 1000)
     private String expectedDeliveryAt;
 
     @Column(name = "status")
     private Integer status;
 
-    @Column(name = "price", length = 45)
+    @Column(name = "price", length = 1000)
     private Double price;
 
-    @Column(name = "delivery_address", length = 100)
+    @Column(name = "delivery_address", length = 1000)
     private String deliveryAddress;
 
-    @Column(name = "accepted_at", length = 45)
+    @Column(name = "accepted_at", length = 1000)
     private String acceptedAt;
 
-    @Column(name = "sent_for_delivery_at", length = 45)
+    @Column(name = "sent_for_delivery_at", length = 1000)
     private String sentForDeliveryAt;
 
-    @Column(name = "completed_at", length = 45)
+    @Column(name = "completed_at", length = 1000)
     private String completedAt;
 
-    @Column(name = "cancelled_at", length = 45)
+    @Column(name = "cancelled_at", length = 1000)
     private String cancelledAt;
 
     // Constructors, getters, and setters

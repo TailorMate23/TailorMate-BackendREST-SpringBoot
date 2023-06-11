@@ -20,7 +20,7 @@ public class ProductType {
     @Column(name = "product_type_id")
     private int productTypeId;
 
-    @Column(name = "product_type_title", length = 45)
+    @Column(name = "product_type_title", length = 1000)
     private String productTypeTitle;
 
     // Constructors, getters, and setters

@@ -24,39 +24,39 @@ public class Tailor {
     @Column(name = "email_address", length = 100)
     private String emailAddress;
 
-    @Column(name = "username", length = 100)
+    @Column(name = "username", length = 1000)
     private String username;
 
     @JsonIgnore
-    @Column(name = "password", length = 100)
+    @Column(name = "password", length = 1000)
     private String password;
 
 
-    @Column(name = "bio", length = 100)
+    @Column(name = "bio", length = 1000)
     private String bio;
 
-    @Column(name = "location", length = 100)
+    @Column(name = "location", length = 1000)
     private String location;
 
-    @Column(name = "avatar", length = 100)
+    @Column(name = "avatar", length = 1000)
     private String avatar;
 
 
-    @Column(name = "created_at", length = 100)
+    @Column(name = "created_at", length = 1000)
     private String createdAt;
 
-    @Column(name = "updated_at", length = 100)
+    @Column(name = "updated_at", length = 1000)
     private String updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "area_of_specialization_id")
     private AreaOfSpecialization areaOfSpecialization;
 
-    @Column(name = "experience", length = 100)
+    @Column(name = "experience", length = 1000)
     private String experience;
 
-    @Column(name = "phone_number")
-    private Integer phoneNumber;
+    @Column(name = "phone_number",length = 1000)
+    private String phoneNumber;
 
     // Constructors, getters, and setters
     // Other constructors
@@ -151,11 +151,11 @@ public class Tailor {
         this.experience = experience;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
