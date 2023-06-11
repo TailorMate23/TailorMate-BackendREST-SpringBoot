@@ -1,9 +1,9 @@
 package com.example.tailormate.controller;
 
-import com.example.tailormate.model.AreaOfSpecialization;
 import com.example.tailormate.model.PortfolioItem;
-import com.example.tailormate.service.AreaOfSpecializationService;
+import com.example.tailormate.model.Tailor;
 import com.example.tailormate.service.PortfolioItemService;
+import com.example.tailormate.service.TailorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/portfolioItems")
+@RequestMapping("/api/portfolioItems")
 public class PortfolioItemController {
 
     private final PortfolioItemService portfolioItemService;
 
+    private final TailorService tailorService;
+
     @Autowired
-    public PortfolioItemController(PortfolioItemService portfolioItemService) {
+    public PortfolioItemController(PortfolioItemService portfolioItemService, TailorService tailorService) {
         this.portfolioItemService = portfolioItemService;
+        this.tailorService = tailorService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<PortfolioItem>> getAllPortfolioItems() {
         List<PortfolioItem> portfolioItems = portfolioItemService.getAllPortfolioItems();
         return new ResponseEntity<>(portfolioItems, HttpStatus.OK);
@@ -37,7 +40,7 @@ public class PortfolioItemController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<PortfolioItem> createPortfolioItem(@RequestBody PortfolioItem portfolioItem) {
         PortfolioItem savedPortfolioItem = portfolioItemService.savePortfolioItem(portfolioItem);
         return new ResponseEntity<>(savedPortfolioItem, HttpStatus.CREATED);
@@ -64,5 +67,12 @@ public class PortfolioItemController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/tailors/{tailorId}")
+    public ResponseEntity<List<PortfolioItem>> getTailorPortFolio(@PathVariable("tailorId") int tailorId){
+        Tailor tailor = tailorService.getTailorById(tailorId);
+        List<PortfolioItem> items = portfolioItemService.getPortfolioItemByTailor(tailor);
+        return new ResponseEntity<>(items,HttpStatus.OK);
     }
 }

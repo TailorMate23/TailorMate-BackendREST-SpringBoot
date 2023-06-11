@@ -146,4 +146,16 @@ public class CustomersController {
 
         return "Password changed successfully";
     }
+
+    @PutMapping("/forgotPassword")
+    public ResponseEntity<String> forgotPassword(@RequestBody LoginForm loginForm){
+        String email = loginForm.getEmail();
+        String password = loginForm.getPassword();
+
+        Customers customers = customerService.findCustomersByEmailAddress(email);
+        String hashedPassword = passwordEncoder.encode(password);
+        customers.setPassword(hashedPassword);
+        customerService.updateCustomer(customers.getCustomerId(),customers);
+        return new ResponseEntity<>("Password Change",HttpStatus.OK);
+    }
 }

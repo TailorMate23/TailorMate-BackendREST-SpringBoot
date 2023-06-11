@@ -48,4 +48,9 @@ public class PortfolioItemServiceImpl implements PortfolioItemService {
     public void deletePortfolioItem(int id) {
         portfolioItemRepository.deleteById(id);
     }
+
+    @Override
+    public List<PortfolioItem> getPortfolioItemByTailor(Tailor tailor) {
+        return portfolioItemRepository.getPortfolioItemByTailor(tailor);
+    }
 }

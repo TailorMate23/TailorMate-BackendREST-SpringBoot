@@ -123,4 +123,16 @@ public class TailorController {
 
         return "Password changed successfully";
     }
+
+    @PutMapping("/forgotPassword")
+    public ResponseEntity<String> forgotPassword(@RequestBody LoginForm loginForm){
+        String email = loginForm.getEmail();
+        String password = loginForm.getPassword();
+
+        Tailor tailor = tailorService.findTailorByEmailAddress(email);
+        String hashedPassword = passwordEncoder.encode(password);
+        tailor.setPassword(hashedPassword);
+        tailorService.updateTailor(tailor);
+        return new ResponseEntity<>("Password Change",HttpStatus.OK);
+    }
 }
