@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/order-details")
+@RequestMapping("/api/order-details")
 public class OrderDetailController {
 
     private final OrderDetailService orderDetailService;
@@ -22,7 +22,7 @@ public class OrderDetailController {
         return orderDetailService.getOrderDetailById(orderDetailId);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public OrderDetail saveOrderDetail(@RequestBody OrderDetail orderDetail) {
         return orderDetailService.saveOrderDetail(orderDetail);
     }
