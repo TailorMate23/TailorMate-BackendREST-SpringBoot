@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b7f99075-ef94-4a5b-9049-be361dfd678d",
+		"_postman_id": "70b33263-8dc8-48ec-a9c6-0f93ab542276",
 		"name": "TailorMate",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24204056"
 	},
 	"item": [
 		{
@@ -119,7 +120,10 @@
 					"name": "http://localhost:8081/api/colors",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -438,11 +442,256 @@
 		},
 		{
 			"name": "Tailor",
-			"item": []
+			"item": [
+				{
+					"name": "getAllTailors",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getTailorById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "TailorLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rimmelasghar10gmail.com\",\r\n    \"password\":\"rimmelasghar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/tailor/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"tailor",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTailor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailAddress\": \"rimmelasghar40@gmail.com\", \r\n    \"username\": \"rimmel Asghar\",\r\n    \"bio\": \"Programmer in reaction\",\r\n    \"location\": \"remote\",\r\n    \"password\":\"rimmelasghar\",\r\n    \"avatar\": \"url:3040000\",\r\n    \"createdAt\": \"19:30\",\r\n    \"updatedAt\": \"11:50\",\r\n    \"areaOfSpecialization\": {\r\n        \"areaOfSpecializationId\": 1,\r\n        \"areaOfSpecializationTitle\": \"kurta\"\r\n    },\r\n    \"experience\": \"8 years\",\r\n    \"phoneNumber\": 33225931\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/tailor/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"tailor",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tailor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"emailAddress\": \"rimmelasghar40@gmail.com\",\r\n        \"username\": \"rimmel Asghar\",\r\n        \"bio\": \"Programmer in reaction\",\r\n        \"location\": \"remote\",\r\n        \"avatar\": \"url:50000\",\r\n        \"createdAt\": \"19:30\",\r\n        \"updatedAt\": \"11:50\",\r\n        \"areaOfSpecialization\": {\r\n            \"areaOfSpecializationId\": 1,\r\n            \"areaOfSpecializationTitle\": \"kurta\"\r\n        },\r\n        \"experience\": \"8 years\",\r\n        \"phoneNumber\": 33225931\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/tailor/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"tailor",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"youremail\",\r\n    \"currentPassword\":\"pss\",\r\n    \"newPassword\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/tailor/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"tailor",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgotPassword",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rimmelasghar40@gmail.com\",\r\n    \"password\":\"register\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/tailor/forgotPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"tailor",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TailorSignup",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "AreaOfSpecialization",
 			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "getAllorders",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getOrdersByTailorId -> http://localhost:8081/api/orders/tailors/{tailor_id}",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrderById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"tailor\": {\r\n            \"tailorId\": 2,\r\n            \"emailAddress\": \"rimmelasghar3@gmail.com\",\r\n            \"username\": \"rimmel Asghar\",\r\n            \"bio\": \"Programmer in reaction\",\r\n            \"location\": \"remote\",\r\n            \"avatar\": \"url:3040000\",\r\n            \"createdAt\": \"19:30\",\r\n            \"updatedAt\": \"11:50\",\r\n            \"areaOfSpecialization\": {\r\n                \"areaOfSpecializationId\": 1,\r\n                \"areaOfSpecializationTitle\": \"kurta\"\r\n            },\r\n            \"experience\": \"8 years\",\r\n            \"phoneNumber\": 33225931\r\n        },\r\n        \"customer\": {\r\n            \"customerId\": 2,\r\n            \"bio\": \"customer 2\",\r\n            \"avatar\": \"url\",\r\n            \"emailAddress\": \"rimmelasghar4@gmail.com\",\r\n            \"username\": null,\r\n            \"createdAt\": \"10:30\",\r\n            \"updatedAt\": \"20:30\",\r\n            \"phoneNumber\": 22593149\r\n        },\r\n        \"createdAt\": \"10:30\",\r\n        \"expectedDeliveryAt\": \"01:05\",\r\n        \"status\": 1,\r\n        \"price\": 300.0,\r\n        \"deliveryAddress\": \"block-14\",\r\n        \"acceptedAt\": \"11:30\",\r\n        \"sentForDeliveryAt\": \"10:30\",\r\n        \"completedAt\": \"28:30\",\r\n        \"cancelledAt\": \"12:30\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/orders/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "New Request",
 					"request": {
@@ -452,6 +701,60 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get Reviews",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Tailor Reviews",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Reviews by Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/reviews/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": []
 		}
 	]
 }
